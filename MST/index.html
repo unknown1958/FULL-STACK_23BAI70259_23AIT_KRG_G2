@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Counter Component</title>
+  <style>
+    button { padding: 10px 20px; margin: 5px; }
+    #message { color: red; font-weight: bold; }
+    #counterForm { display: inline-block; margin-top: 20px; }
+  </style>
+  <script>
+    let count = 0; // counter state
+
+    function updateCounter() {
+      document.getElementById('counter').value = count;
+      if (count === 10) {
+        document.getElementById('message').textContent = "Maximum limit reached!";
+      } else {
+        document.getElementById('message').textContent = "";
+      }
+    }
+
+    function increment() {
+      if (count < 10) {
+        count++;
+        updateCounter();
+      } else {
+        document.getElementById('message').textContent = "Maximum limit reached!";
+      }
+    }
+
+    function decrement() {
+      if (count > 0) {
+        count--;
+        updateCounter();
+      }
+    }
+
+    window.onload = function() {
+      updateCounter(); // initialize counter on page load
+    }
+  </script>
+</head>
+<body>
+  <h2>Counter Component</h2>
+  <div id="counterForm">
+    <button onclick="decrement()">-</button>
+    <input type="text" id="counter" value="0" readonly style="width:40px; text-align:center;">
+    <button onclick="increment()">+</button>
+    <p id="message"></p>
+  </div>
+</body>
+</html>
